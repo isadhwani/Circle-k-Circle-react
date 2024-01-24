@@ -1,13 +1,22 @@
 import { useState } from "react";
 
-const circles = [["Aanya Sehgal", "Shannon Damuth", "Maya Waugh", "Amanda Gomes", "Jake Woo"],
-["Isaac Sadhwani", "Anjana Sunil Kumar", "Cindy Chou", "Maddy Tansley"],
-["Luke Chasse", "Liam Sutton", "Lauren Chiasson", "Ava Alaeddini", "Linda Lin"],
-["Michelle Wang", "Anne Merritt", "Xinlei (Linda) Liu", "Pehel Jain", "Chan Raksmey Lim"],
-["Lauren Phan", "Ethan Pon", "Christopher David", "Dhruv Miyani", "Lindsay Navick"],
-["Katelyn Luong", "Ria Jansun", "Dominick Doyle", "Jihee Han"],
-["Talia Lipman", "Nina James", "Zachary Upson", "Ellie Gatoff", "Zak Kahn"],
-["Sruthi Chintalacharuvu", "Yu Jie Law", "Izzy Bulow", "Meira Wang"]]
+const circles = [["aanya sehgal", "shannon damuth", "maya waugh", "amanda gomes", "jake woo"],
+["isaac sadhwani", "anjana sunil kumar", "cindy chou", "maddy tansley"],
+["luke chasse", "liam sutton", "lauren chiasson", "ava alaeddini", "linda lin"],
+["michelle wang", "anne merritt", "xinlei (linda) liu", "pehel jain", "chan raksmey lim"],
+["lauren phan", "ethan pon", "christopher david", "dhruv miyani", "lindsay navick"],
+["katelyn luong", "ria jansun", "dominick doyle", "jihee han"],
+["talia lipman", "nina james", "zachary upson", "ellie gatoff", "zak kahn"],
+["sruthi chintalacharuvu", "yu jie law", "izzy bulow", "meira wang"]]
+
+const toSentenceCase = (str) => {
+  return str.replace(
+    /\w\S*/g,
+    function(txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    }
+  );
+}
 
 export default function App() {
 
@@ -19,10 +28,10 @@ export default function App() {
 
 
   const findCircle = () => {
-    console.log("searching for " + searchName)
+    console.log("searching for " + searchName.toLowerCase())
     // console.log("searching for " + searchName())
     for (let i = 0; i < circles.length; i++) {
-      if (circles[i].includes(searchName) !== false) {
+      if (circles[i].includes(searchName.toLowerCase()) !== false) {
         console.log("Found " + searchName + " in circle " + i)
         setFoundCircle(circles[i]);
         return;
@@ -82,7 +91,7 @@ export default function App() {
               <h1 class="text-2xl font-bold">Circle Found!</h1>
               <div class="list-disc">
                 {foundCircle.map((name) => (
-                  <li>{name}</li>
+                  <li>{toSentenceCase(name)}</li>
                 ))}
               </div>
             </div>
@@ -96,7 +105,7 @@ export default function App() {
                   <li>
                     <div class="list-disc">
                       {circle.map((name) => (
-                        <li>{name}</li>
+                        <li>{toSentenceCase(name)}</li>
                       ))}
                     </div>
                     <br />
