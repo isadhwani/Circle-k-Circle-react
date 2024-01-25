@@ -63,7 +63,7 @@ export default function App() {
                 onChange={(e) => {
                   setSearchName(e.target.value)
                 }}
-                className="justify-center shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="John Doe" />
+                className="justify-center shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Jason Tatum" />
             </div>
 
 
